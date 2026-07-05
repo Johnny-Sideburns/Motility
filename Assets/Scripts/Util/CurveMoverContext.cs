@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CurveMoverContext : MonoBehaviour
@@ -28,27 +29,37 @@ public class CurveMoverContext : MonoBehaviour
     public CurveMover _rightFootTarget;
     public CurveMover _rightFootPull;
     private Dictionary<EMover, CurveMover> _moverMap;
+    public List<CurveMover> Movers => _moverMap.Values.ToList();
     public enum ERelativeTransform
     {
-        Body,
+        Anchor,
         Hip,
         Chest,
         Head,
         LeftHand,
-        RightHand
+        RightHand,
+        LeftFoot,
+        RightFoot
     }
 
     [Header ("Transforms")]
-    public Transform _bodyTransform;
+    public Transform _anchorTransform;
     public Transform _hipTransform;
     public Transform _chestTransform;
     public Transform _headTransform;
     public Transform _leftHandTransform;
     public Transform _rightHandTransform;
+    public Transform _leftFootTransform;
+    public Transform _rightFootTransform;
     private Dictionary<ERelativeTransform, Transform> _transformMap;
  
     void Awake()
     {
+        InitiateMaps();
+    }
+    public void InitiateMaps()
+    {
+        if (_transformMap != null && _moverMap != null) return;
         CreateMoverMap();
         CreateTransformMap();
     }
@@ -75,12 +86,14 @@ public class CurveMoverContext : MonoBehaviour
     private void CreateTransformMap()
     {
         _transformMap = new Dictionary<ERelativeTransform, Transform>();
-        if (_bodyTransform != null)     _transformMap[ERelativeTransform.Body] = _bodyTransform;
-        if (_hipTransform != null)     _transformMap[ERelativeTransform.Hip] = _hipTransform;
-        if (_chestTransform != null)     _transformMap[ERelativeTransform.Chest] = _chestTransform;
-        if (_headTransform != null)     _transformMap[ERelativeTransform.Head] = _headTransform;
+        if (_anchorTransform != null)       _transformMap[ERelativeTransform.Anchor] = _anchorTransform;
+        if (_hipTransform != null)          _transformMap[ERelativeTransform.Hip] = _hipTransform;
+        if (_chestTransform != null)        _transformMap[ERelativeTransform.Chest] = _chestTransform;
+        if (_headTransform != null)         _transformMap[ERelativeTransform.Head] = _headTransform;
         if (_leftHandTransform != null)     _transformMap[ERelativeTransform.LeftHand] = _leftHandTransform;
-        if (_rightHandTransform != null)     _transformMap[ERelativeTransform.RightHand] = _rightHandTransform;
+        if (_rightHandTransform != null)    _transformMap[ERelativeTransform.RightHand] = _rightHandTransform;
+        if (_leftFootTransform != null)     _transformMap[ERelativeTransform.LeftFoot] = _leftFootTransform;
+        if (_rightFootTransform != null)    _transformMap[ERelativeTransform.RightFoot] = _rightFootTransform;
     }
 
     public Transform GetBodyTransform(ERelativeTransform eRelativeTransform)

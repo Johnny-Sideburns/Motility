@@ -12,6 +12,7 @@ public class FootDetector : MonoBehaviour
     public Vector3 GetTargetPositon => _targetPosition;
     public Quaternion GetTargetRotation => _targetRotation;
 
+/*
     void FixedUpdate()
     {
         RaisingLowering();
@@ -25,10 +26,7 @@ public class FootDetector : MonoBehaviour
             _isGrounded = false;
         }
     }
-    void Awake()
-    {
-        _center = _collider.center;
-    }
+
     void OnTriggerEnter(Collider other)
     {
         if (_movingDown && !_hasTarget)
@@ -60,15 +58,17 @@ public class FootDetector : MonoBehaviour
         _movingDown = footVel.y < 0f;
         _movingUp   = footVel.y > 0f;
     }
+*/
 
     void GetPoint()
     {
+        
         if (Physics.Raycast(transform.position +_center, - transform.up, out RaycastHit hit, 1f))
         {
             _targetPosition = hit.point - _center;
-
+            float toeLength =  0.2f;//_collider.height/2;
             //to get the target rotation a second point is needed, this first attempts with heel then toe
-            if (Physics.Raycast(transform.position +_center - transform.forward * _collider.height/2, - transform.up, out RaycastHit hit0, 1f))
+            if (Physics.Raycast(transform.position +_center - transform.forward * toeLength, - transform.up, out RaycastHit hit0, 1f))
             {
                 //establish forward by projecting on plane using normal
                 Vector3 forward = (hit.point - hit0.point).normalized;
@@ -79,7 +79,7 @@ public class FootDetector : MonoBehaviour
                 Debug.Log("Target aquired" + _targetPosition);
 
 
-            } else if (Physics.Raycast(transform.position +_center -transform.forward * _collider.height/2, - transform.up, out RaycastHit hit1, 1f))
+            } else if (Physics.Raycast(transform.position +_center -transform.forward * toeLength, - transform.up, out RaycastHit hit1, 1f))
             {
 
                 Vector3 forward = (hit.point - hit1.point).normalized;

@@ -10,8 +10,9 @@ public class IdleState : MovementState
     public override void EnterState()
     {
         Debug.Log("Enter State Idle");
-        Context.IdleArms.Prepare();
-        Context.IdleArms.Go();
+        //Context.IdleArms.Prepare();
+        //Context.IdleArms.Go();
+        Context.Marionette.AnimateIdle();
     }
     public override void UpdateState()
     {
@@ -20,11 +21,18 @@ public class IdleState : MovementState
     public override void ExitState()
     {
         Debug.Log("Exit State Idle");
-        Context.IdleArms.Stop();
+        //Context.IdleArms.Stop();
     }
     public override MovementMachine.EMoveState GetNextState()
     {
-        if (Vector3.Magnitude(Context.Rb.linearVelocity) > 0.01)
+        /*
+        //ignore ragdoll falling stuff for now
+        if (Context.Rb.linearVelocity.y < - 4)
+        {
+            return MovementMachine.EMoveState.Falling;
+        }
+        */
+        if (Vector3.Magnitude(new Vector2(Context.Rb.linearVelocity.x, Context.Rb.linearVelocity.z)) > 0.01)
         {
             return MovementMachine.EMoveState.Walk;
         }

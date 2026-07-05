@@ -94,21 +94,27 @@ public class CurveMakerController : MonoBehaviour
     {   
         CreateMap();  
         _curveAnimation._playtime = _playtime;
+        //_curveAnimation._map = new Dictionary<CurveMoverContext.EMover, RelativeCurveData>();
+        _curveAnimation._movers.Clear();
+        _curveAnimation._data.Clear();
         foreach (KeyValuePair<CurveMaker, CurveMoverContext.EMover> item in _map)
         {   
             item.Key.SaveData();
-            _curveAnimation._map[item.Value] = item.Key._relatedData;
+        //    _curveAnimation._map[item.Value] = item.Key._relatedData;
+            _curveAnimation._movers.Add(item.Value);
+            _curveAnimation._data.Add(item.Key._relatedData);
         }
     }
     void StuffData()
     {
         if (_map == null) Save();
         if (_movers != null) _movers.Clear();
-        foreach (KeyValuePair<CurveMoverContext.EMover, RelativeCurveData> item in _curveAnimation._map)
+        //foreach (KeyValuePair<CurveMoverContext.EMover, RelativeCurveData> item in _curveAnimation._map)
+        for (int i = 0; i < _curveAnimation._movers.Count; i++)
         {
-            CurveMover mover = _context.GetMover(item.Key);
+            CurveMover mover = _context.GetMover(_curveAnimation._movers[i]);
             if (mover == null) continue;
-            List<WeightedCurveData> tmp = new List<WeightedCurveData>{new WeightedCurveData{ weight = 1f, relativeCurveData = item.Value}};
+            List<WeightedCurveData> tmp = new List<WeightedCurveData>{new WeightedCurveData{ weight = 1f, relativeCurveData = _curveAnimation._data[i]}};
             mover.SetMoveData(tmp);
             _movers.Add(mover);
         }

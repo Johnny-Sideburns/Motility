@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class WalkState : MovementState
+public class StepShuffleState : MovementState
 {
-    public WalkState(MoveContext context, MovementMachine.EMoveState estate) : base(context, estate)
+    public StepShuffleState(MoveContext context, MovementMachine.EMoveState estate) : base(context, estate)
     {
         Context = context;
     }
@@ -12,16 +12,16 @@ public class WalkState : MovementState
     FootDetector _otherFootDetector;
     float _lerper;
     bool _placing;
-
+    int _done;
 
     public override void EnterState()
     {
-        Debug.Log("Enter State Walk");
+    /*
+        Debug.Log("Enter State Step");
 
         SelectActiveFoot();
         _activeMover.ResetValues();
         _activeMover.Prepare();
-        _activeMover._timer = Context.WalkArms.TimeMax /1.3f;
 
         _activeMover.UnHold();
         _activeMover.Go();
@@ -29,36 +29,26 @@ public class WalkState : MovementState
         _otherMover.Prepare();
         _otherMover.Hold();
         _otherMover.Go();
-        //_otherMover.Stop();
         _otherMover.ResetValues();
 
-        /*
-        */
-        Context.WalkArms.Prepare();
-        Context.WalkArms.ResetValues();
-        Context.WalkArms._timer = Context.WalkArms.TimeMax /1.3f;
-        Context.WalkArms.Reverse *= -1;
-        Context.WalkArms.UnHold();
-        Context.WalkArms.Go();
+        Context.IdleArms.Prepare();
+        Context.IdleArms.ResetValues();
+        Context.IdleArms.Reverse *= -1;
+        Context.IdleArms.UnHold();
+        Context.IdleArms.Go();
+
+        _done = 0;
+    */
 
     }
     public override void UpdateState()
     {
         if (_activeFootDetector.HasTarget)
         {
-            //_activeMover.Hold();
-            Reseting();
-            SwitchFeet();
             _otherMover.Stop();
             _lerper = 0;
             _placing = true;
-
-
             
-        } else if (_activeMover.IsDone)
-        {
-            Reseting();
-            SwitchFeet();
         }
 
         if (!_placing) return;
@@ -68,16 +58,20 @@ public class WalkState : MovementState
 
     public override void ExitState()
     {
-        Debug.Log("Exit State Walk");
+        Debug.Log("Exit State Step");
         _otherMover.Stop();
         _activeMover.Stop();
-        Context.WalkArms.Stop();
+        //Context.IdleArms.Stop();
     }
     public override MovementMachine.EMoveState GetNextState()
     {
-        if (Context.Rb.linearVelocity.magnitude < 0.01)
+        if (_done >= 2)
         {
-            return MovementMachine.EMoveState.StepShuffle;
+            return MovementMachine.EMoveState.Idle;
+        }
+        if (Context.Rb.linearVelocity.magnitude > 0.01)
+        {
+            return MovementMachine.EMoveState.Walk;
         }
         return StateKey;
     }
@@ -90,20 +84,22 @@ public class WalkState : MovementState
         _activeFootDetector = _otherFootDetector;
         _otherMover = tmpMover;
         _otherFootDetector = tmpDetector;
-        Context.WalkArms.Reverse *= -1;
-        if (Context.WalkArms.Reverse ==-1) Context.WalkArms._timer = 1;
-
-
+        /*
+        Context.IdleArms.Reverse *= -1;
+        if (Context.IdleArms.Reverse ==-1) Context.IdleArms._timer = 1;
+        */
 
     }
 
     void SelectActiveFoot()
     {
-        _activeMover = Context.WalkLeftFoot;
+        /*
+        _activeMover = Context.IdleLeftFoot;
         _activeFootDetector = Context.LeftFootDetector;
-        _otherMover = Context.WalkRightFoot;
+        _otherMover = Context.IdleRightFoot;
         _otherFootDetector = Context.RightFootDetector;
-        Context.WalkArms.Reverse = -1;
+        Context.IdleArms.Reverse = -1;
+        */
         
         if (!_activeFootDetector.IsGrounded && _otherFootDetector.IsGrounded) return;
         if (_activeFootDetector.IsGrounded && !_otherFootDetector.IsGrounded)
@@ -123,10 +119,12 @@ public class WalkState : MovementState
     void Reseting()
     {
         _activeMover.ResetValues();
-        Context.WalkArms.Prepare();
-        Context.WalkArms.ResetValues();
-        Context.WalkArms.UnHold();
-        Context.WalkArms.Go();        
+        /*
+        Context.IdleArms.Prepare();
+        Context.IdleArms.ResetValues();
+        Context.IdleArms.UnHold();
+        Context.IdleArms.Go();        
+        */
         _otherMover.ResetValues();
         _otherMover.UnHold();
         _otherMover.Go();
@@ -139,12 +137,14 @@ public class WalkState : MovementState
         _otherFootDetector.transform.rotation = Quaternion.Slerp(_otherFootDetector.transform.rotation, _otherFootDetector.GetTargetRotation, _lerper);
         if (_lerper >= 1)
         {
+            
             _placing = false;
             _otherMover.Hold();
             _otherMover.Go();
-
+            _done +=1;
+            Reseting();
+            SwitchFeet();
         }
 
     }
 }
-

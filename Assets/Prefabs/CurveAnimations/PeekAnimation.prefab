@@ -1,0 +1,657 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5854990766089946711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3795024915739401541}
+  - component: {fileID: 659607910838948843}
+  m_Layer: 0
+  m_Name: PeekAnimation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3795024915739401541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854990766089946711}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &659607910838948843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854990766089946711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d061a009824e354fa4bef35750e0e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CurveAnimationHolder
+  _playtime: 23
+  _movers: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
+  _data:
+  - curveMoveData:
+      TimePos:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      TimeRot:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      CurvePositions:
+      - {x: -3.5029895e-18, y: -0.02699995, z: -0.04941988}
+      - {x: -3.5029895e-18, y: -0.02699995, z: -0.04941988}
+      - {x: -3.5029895e-18, y: -0.02699995, z: -0.04941988}
+      - {x: -3.5029895e-18, y: -0.02699995, z: -0.04941988}
+      CurveRotations:
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: -0.000037764585, y: -0.007592026, z: 0.0049740383, w: 0.9999588}
+      - {x: -0.000037764585, y: 0.007592026, z: -0.0049740383, w: 0.9999588}
+      - {x: 0, y: 0, z: 0, w: 1}
+    relativeTransform: 0
+    actualTransform: {fileID: 0}
+  - curveMoveData:
+      TimePos:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      TimeRot:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      CurvePositions:
+      - {x: 7.1019245e-15, y: 1.1775925, z: -0.10500002}
+      - {x: 7.1019245e-15, y: 1.1775925, z: 0.08087015}
+      - {x: 7.1019245e-15, y: 1.1775925, z: 0.08087015}
+      - {x: 7.1019245e-15, y: 1.1775925, z: 0.08087015}
+      CurveRotations:
+      - {x: -0.0005842489, y: -0.051896907, z: 0.011241991, w: 0.99858904}
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: -0.00045476673, y: 0.03803623, z: -0.011946638, w: 0.9992048}
+    relativeTransform: 0
+    actualTransform: {fileID: 0}
+  - curveMoveData:
+      TimePos:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      TimeRot:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      CurvePositions:
+      - {x: -0.461561, y: 0.27304506, z: 0.51099205}
+      - {x: -0.42275798, y: 0.20318267, z: 0.54834104}
+      - {x: -0.4552386, y: 0.28223547, z: 0.5437273}
+      - {x: -0.461561, y: 0.27304506, z: 0.51099205}
+      CurveRotations:
+      - {x: -0.5867846, y: 0.32554728, z: -0.5448179, w: 0.5028682}
+      - {x: -0.5867846, y: 0.32554728, z: -0.5448179, w: 0.5028682}
+    relativeTransform: 3
+    actualTransform: {fileID: 0}
+  - curveMoveData:
+      TimePos:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      TimeRot:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      CurvePositions:
+      - {x: -1.780942, y: -1.3157314, z: 1.9256117}
+      - {x: -1.2361646, y: -1.4579204, z: 1.2774804}
+      - {x: -2.5981684, y: -1.286354, z: 2.16606}
+      - {x: -1.780942, y: -1.3157314, z: 1.9256117}
+      CurveRotations:
+      - {x: -0.12274965, y: 0.0006574504, z: 0.018475419, w: 0.9922655}
+      - {x: -0.12274965, y: 0.0006574504, z: 0.018475419, w: 0.9922655}
+      - {x: -0.12274965, y: 0.0006574504, z: 0.018475419, w: 0.9922655}
+      - {x: -0.12274965, y: 0.0006574504, z: 0.018475419, w: 0.9922655}
+    relativeTransform: 3
+    actualTransform: {fileID: 0}
+  - curveMoveData:
+      TimePos:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      TimeRot:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      CurvePositions:
+      - {x: 0.681, y: 0.20024318, z: -0.02156153}
+      - {x: 0.681, y: 0.20024318, z: -0.02156153}
+      - {x: 0.681, y: 0.20024318, z: -0.02156153}
+      - {x: 0.681, y: 0.20024318, z: -0.02156153}
+      CurveRotations:
+      - {x: 0.002222097, y: -0.20135333, z: 0.34650466, w: 0.91618043}
+      - {x: 0.002222097, y: -0.20135333, z: 0.34650466, w: 0.91618043}
+      - {x: 0.002222097, y: -0.20135333, z: 0.34650466, w: 0.91618043}
+      - {x: 0.002222097, y: -0.20135333, z: 0.34650466, w: 0.91618043}
+    relativeTransform: 1
+    actualTransform: {fileID: 0}
+  - curveMoveData:
+      TimePos:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      TimeRot:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      CurvePositions:
+      - {x: 1.06, y: -0.40413988, z: -5.163337}
+      - {x: 1.06, y: -0.40413988, z: -5.163337}
+      - {x: 2.41, y: 0.23717159, z: -2.0512803}
+      - {x: 1.48, y: 0.3541997, z: -2.3331747}
+      CurveRotations:
+      - {x: -0.13052616, y: 0, z: 0, w: 0.9914449}
+      - {x: -0.13052616, y: 0, z: 0, w: 0.9914449}
+      - {x: -0.13052616, y: 0, z: 0, w: 0.9914449}
+      - {x: -0.13052616, y: 0, z: 0, w: 0.9914449}
+    relativeTransform: 1
+    actualTransform: {fileID: 0}
+  - curveMoveData:
+      TimePos:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      TimeRot:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      CurvePositions:
+      - {x: -0.65, y: -2.2800002, z: 0.049999982}
+      - {x: -0.65, y: -2.2800002, z: 0.049999982}
+      - {x: -0.65, y: -2.2800002, z: 0.049999982}
+      - {x: -0.65, y: -2.2800002, z: 0.049999982}
+      CurveRotations:
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: 0, y: 0, z: 0, w: 1}
+    relativeTransform: 0
+    actualTransform: {fileID: 0}
+  - curveMoveData:
+      TimePos:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      TimeRot:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      CurvePositions:
+      - {x: -0.484, y: 0.23000002, z: 1.51}
+      - {x: -0.484, y: 0.23000002, z: 1.51}
+      - {x: -0.484, y: 0.23000002, z: 1.51}
+      - {x: -0.484, y: 0.23000002, z: 1.51}
+      CurveRotations:
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: 0, y: 0, z: 0, w: 1}
+    relativeTransform: 0
+    actualTransform: {fileID: 0}
+  - curveMoveData:
+      TimePos:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      TimeRot:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      CurvePositions:
+      - {x: 0.65, y: -2.2800002, z: 0.049999982}
+      - {x: 0.65, y: -2.2800002, z: 0.049999982}
+      - {x: 0.65, y: -2.2800002, z: 0.049999982}
+      - {x: 0.65, y: -2.2800002, z: 0.049999982}
+      CurveRotations:
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: 0, y: 0, z: 0, w: 1}
+    relativeTransform: 0
+    actualTransform: {fileID: 0}
+  - curveMoveData:
+      TimePos:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      TimeRot:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 1
+          inSlope: 0
+          outSlope: 0
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      CurvePositions:
+      - {x: 0.484, y: 0.23000002, z: 1.51}
+      - {x: 0.484, y: 0.23000002, z: 1.51}
+      - {x: 0.484, y: 0.23000002, z: 1.51}
+      - {x: 0.484, y: 0.23000002, z: 1.51}
+      CurveRotations:
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: 0, y: 0, z: 0, w: 1}
+      - {x: 0, y: 0, z: 0, w: 1}
+    relativeTransform: 0
+    actualTransform: {fileID: 0}

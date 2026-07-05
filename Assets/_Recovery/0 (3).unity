@@ -528,11 +528,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 15.46, y: 0, z: 0}
---- !u!4 &535386771 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1844736800036586457, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}
-  m_PrefabInstance: {fileID: 1174667702}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &555146520 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1643945875870864735, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}
@@ -730,15 +725,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4024112805228202072, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4024112805228202072, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.8
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4024112805228202072, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 4.32
       objectReference: {fileID: 0}
     - target: {fileID: 4611782806784268846, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}
       propertyPath: m_LocalPosition.x
@@ -810,7 +801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8010861231227551694, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.26
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8010861231227551694, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}
       propertyPath: m_LocalPosition.z
@@ -885,10 +876,6 @@ PrefabInstance:
       value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 8438929097218894465, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}
-      propertyPath: m_Data.m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8438929097218894465, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}
       propertyPath: m_Data.m_SourceObjects.m_Item0.weight
       value: 1
       objectReference: {fileID: 0}
@@ -914,9 +901,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7234922249633162612, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1174667715}
-    - targetCorrespondingSourceObject: {fileID: 7234922249633162612, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1174667720}
   m_SourcePrefab: {fileID: 100100000, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}
 --- !u!1 &1174667703 stripped
 GameObject:
@@ -943,10 +927,9 @@ MonoBehaviour:
   _speed: 3
   _turnSpeed: 0.5
   _maxForce: 0.3
-  _ignoreRadius: 1.5
+  _ignoreRadius: 3
   _lookTarget: {fileID: 1174667704}
   _rb: {fileID: 1174667706}
-  _stanceController: {fileID: 1174667715}
 --- !u!54 &1174667706
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1036,10 +1019,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8b7d113215e4f439767e000881d037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementMachine
-  _rb: {fileID: 1174667706}
+  _rb: {fileID: 0}
   _rootCollider: {fileID: 0}
-  _marionette: {fileID: 1174667709}
-  _playerController: {fileID: 1174667705}
+  _marionette: {fileID: 0}
 --- !u!114 &1174667709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1053,18 +1035,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Marionette
   _curveMoverContext: {fileID: 1174667710}
-  _idleAnimations:
+  _idleAnimation:
   - {fileID: 659607910838948843, guid: e064b32d63f0ab9418f06ba753672fca, type: 3}
   _idleWeights:
   - 1
-  _walkAnimations: []
-  _walkWeights: []
-  _runAnimations: []
-  _runWeights: []
-  _transitionWeight: 0
-  _collider: {fileID: 0}
-  _metarig: {fileID: 535386771}
-  _animate: 1
+  _activeMovers: []
+  t: 0
 --- !u!114 &1174667710 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4774704783182786541, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}
@@ -1076,24 +1052,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b00a09b701bc345ba261d41fa09b2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurveMoverContext
---- !u!114 &1174667715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174667703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3299f985003e5b648a4509bf00986a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StanceController
-  _context: {fileID: 1174667710}
-  _leftFootDetector: {fileID: 0}
-  _rightFootDetector: {fileID: 0}
-  _collider: {fileID: 1174667720}
---- !u!135 &1174667720
-SphereCollider:
+--- !u!136 &1174667715
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1107,12 +1067,14 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 3.5
-  m_Center: {x: 0, y: 0, z: 0.24}
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 2.68, z: 0}
 --- !u!114 &1355556073 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5721000214746046748, guid: 381baedf1c6cf064ba7c130fc7241210, type: 3}

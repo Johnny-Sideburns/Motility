@@ -13,22 +13,38 @@ public class CurveMover : MonoBehaviour
     private Quaternion _lockRot;
     private float _weightSum;
     public CurveMoverContext _context;
-    void FixedUpdate()
+    void Update()
     {
         // or NOT move
         if (_isLocked) {
-            
             transform.position = _lockPos;
             transform.rotation = _lockRot;
             return;
         }
         //MixMove();
     }
-
+    public void Move(Vector3 targetPosition, Quaternion targetRotation)
+    {
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, _snapSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _snapSpeed * Time.deltaTime *60);
+    }
+    public void Hold()
+    {
+        if (_isLocked) return;
+        _lockPos = transform.position;
+        _lockRot = transform.rotation;
+        _isLocked = true;
+    }
+    public void UnHold()
+    {
+        _isLocked = false;
+    }
+    /*
+    * Depricated code, is currently used for curve maker preview
+    */
     public void MixMove()
     {        
         transform.position = Vector3.MoveTowards(transform.position, GetPositionMixed(), _snapSpeed * Time.deltaTime);
-
         transform.rotation = GetRotationMixed();
     }
     private Vector3 GetPositionMixed()
@@ -44,18 +60,18 @@ public class CurveMover : MonoBehaviour
 
         return result;
     }
-    
+
     //"Estimating the Average of a Set of Rotations" (Markley et al., 2007)
     private Quaternion GetRotationMixed()
     {        
-        // Find reference quaternion (first non-zero weight)
+        // Find reference quaternion (first with non-zero weight)
         Quaternion reference = Quaternion.identity;
         bool found = false;
         foreach (KeyValuePair<CurveMoveData, Tuple<float, Transform>> kvp in _moveData)
         {
             if (kvp.Value.Item1 != 0)
             {
-                reference = kvp.Value.Item2.rotation * GetRotation(kvp.Key);
+                reference = kvp.Value.Item2.rotation * BezierCurve.GetRotation(kvp.Key, _timeX);
                 found = true;
                 break;
             }
@@ -66,7 +82,7 @@ public class CurveMover : MonoBehaviour
         foreach (KeyValuePair<CurveMoveData, Tuple<float, Transform>> kvp in _moveData)
         {
             float w = kvp.Value.Item1 / _weightSum;
-            Quaternion q = kvp.Value.Item2.rotation * GetRotation(kvp.Key);
+            Quaternion q = kvp.Value.Item2.rotation * BezierCurve.GetRotation(kvp.Key, _timeX);
             if (Quaternion.Dot(reference, q) < 0f) q = new Quaternion(-q.x, -q.y, -q.z, -q.w);
             accum += new Vector4(q.x, q.y, q.z, q.w) * w;
         }
@@ -77,27 +93,6 @@ public class CurveMover : MonoBehaviour
         accum /= mag;
         return new Quaternion(accum.x, accum.y, accum.z, accum.w);
     }
-
-    //using direct linear interpolation between quaternions for rotations
-    public Quaternion GetRotation(CurveMoveData data)
-    {
-        float t = data.TimeRot.Evaluate(_timeX);
-
-        if (t >= 1)
-        {
-            return data.CurveRotations[^1];
-        }
-        
-        //find where it is in time between points
-        float tConcrete = t * (data.CurveRotations.Count - 1);
-        int i = Mathf.FloorToInt(tConcrete);
-
-        // issue can occur here IF tr = 1
-        i = Mathf.Clamp(i, 0, data.CurveRotations.Count - 2);
-
-        float interT = tConcrete - i;
-        return Quaternion.Slerp(data.CurveRotations[i], data.CurveRotations[i+1], interT);
-    }
    
     public void SetTimeX(float timeX)
     {
@@ -107,17 +102,7 @@ public class CurveMover : MonoBehaviour
     {
         _snapSpeed = snapSpeed;
     }
-    public void Hold()
-    {
-        _isLocked = true;
-        _lockPos = transform.position;
-        _lockRot = transform.rotation;
-    }
-    public void UnHold()
-    {
-        _isLocked = false;
-    }
-
+    // I don't like that I am extracting data at one point and then "repacking" it to extract it again later... I think this should be handled at one point
     public void SetMoveData(List<WeightedCurveData> curveDatas)
     {
         _weightSum = 0;
@@ -128,4 +113,5 @@ public class CurveMover : MonoBehaviour
             _weightSum += curveData.weight;
         }
     }
+
 }

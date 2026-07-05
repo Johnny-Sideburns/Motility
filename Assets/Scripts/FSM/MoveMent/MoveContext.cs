@@ -3,7 +3,10 @@ using UnityEngine.Animations.Rigging;
 public class MoveContext
 {
     [SerializeField] Rigidbody _rb;
-    [SerializeField] CapsuleCollider _rootCollider;
+    //[SerializeField] CapsuleCollider _rootCollider;
+    [SerializeField] Marionette _marionette;
+    [SerializeField] PlayerController _playerController;
+    /*
     [SerializeField] CurveMovePlayer _walkArms;
     [SerializeField] CurveMovePlayer _walkLeftFoot;
     [SerializeField] CurveMovePlayer _walkRightFoot;
@@ -12,10 +15,14 @@ public class MoveContext
     [SerializeField] CurveMovePlayer _idleRightFoot;
     [SerializeField] FootDetector _leftFootDetector;
     [SerializeField] FootDetector _rightFootDetector;
+    */
 
     public MoveContext(
         Rigidbody rb, 
-        CapsuleCollider rootCollider,
+        //CapsuleCollider rootCollider,
+        Marionette marionette,
+        PlayerController playerController
+        /*
         CurveMovePlayer walkArms,
         CurveMovePlayer walkLeftFoot,
         CurveMovePlayer walkRightFoot,
@@ -24,10 +31,14 @@ public class MoveContext
         CurveMovePlayer idleRightFoot,
         FootDetector leftFootDetector,
         FootDetector rightFootDetector
+        */
         )
     {
         _rb = rb;
-        _rootCollider = rootCollider;
+        //_rootCollider = rootCollider;
+        _marionette = marionette;
+        _playerController = playerController;
+        /*
         _walkArms = walkArms;
         _walkLeftFoot = walkLeftFoot;
         _walkRightFoot = walkRightFoot;
@@ -36,10 +47,15 @@ public class MoveContext
         _idleRightFoot = idleRightFoot;
         _leftFootDetector = leftFootDetector;
         _rightFootDetector = rightFootDetector;
+        */
     }
 
     public Rigidbody Rb => _rb;
-    public CapsuleCollider RootCollider => _rootCollider;
+    //public CapsuleCollider RootCollider => _rootCollider;
+    public Marionette Marionette => _marionette;
+    public PlayerController PlayerController => _playerController;
+
+    /*
     public CurveMovePlayer WalkArms => _walkArms;
     public CurveMovePlayer WalkLeftFoot => _walkLeftFoot;
     public CurveMovePlayer WalkRightFoot => _walkRightFoot;
@@ -48,4 +64,5 @@ public class MoveContext
     public CurveMovePlayer IdleRightFoot => _idleRightFoot;
     public FootDetector LeftFootDetector => _leftFootDetector;
     public FootDetector RightFootDetector => _rightFootDetector;
+    */
 }

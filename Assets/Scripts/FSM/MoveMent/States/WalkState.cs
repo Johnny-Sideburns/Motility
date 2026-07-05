@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class StepShuffleState : MovementState
+public class WalkState : MovementState
 {
-    public StepShuffleState(MoveContext context, MovementMachine.EMoveState estate) : base(context, estate)
+    public WalkState(MoveContext context, MovementMachine.EMoveState estate) : base(context, estate)
     {
         Context = context;
     }
@@ -10,17 +10,19 @@ public class StepShuffleState : MovementState
     CurveMovePlayer _otherMover;
     FootDetector _activeFootDetector;
     FootDetector _otherFootDetector;
-    float _lerper;
-    bool _placing;
-    int _done;
+    //float _lerper;
+    //bool _placing;
+
 
     public override void EnterState()
     {
-        Debug.Log("Enter State Step");
+        Debug.Log("Enter State Walk");
 
+        /*
         SelectActiveFoot();
         _activeMover.ResetValues();
         _activeMover.Prepare();
+        //_activeMover._timer = Context.WalkArms.TimeMax /1.3f;
 
         _activeMover.UnHold();
         _activeMover.Go();
@@ -28,48 +30,63 @@ public class StepShuffleState : MovementState
         _otherMover.Prepare();
         _otherMover.Hold();
         _otherMover.Go();
+        //_otherMover.Stop();
         _otherMover.ResetValues();
 
-        Context.IdleArms.Prepare();
-        Context.IdleArms.ResetValues();
-        Context.IdleArms.Reverse *= -1;
-        Context.IdleArms.UnHold();
-        Context.IdleArms.Go();
-
-        _done = 0;
+        Context.WalkArms.Prepare();
+        Context.WalkArms.ResetValues();
+        Context.WalkArms._timer = Context.WalkArms.TimeMax /1.3f;
+        Context.WalkArms.Reverse *= -1;
+        Context.WalkArms.UnHold();
+        Context.WalkArms.Go();
+        */
 
     }
     public override void UpdateState()
     {
+        /*
         if (_activeFootDetector.HasTarget)
         {
+            //_activeMover.Hold();
+            Reseting();
+            SwitchFeet();
             _otherMover.Stop();
             _lerper = 0;
             _placing = true;
+
+
             
+        } else if (_activeMover.IsDone)
+        {
+            Reseting();
+            SwitchFeet();
         }
 
         if (!_placing) return;
         Placing();
+        */
     }
 
 
     public override void ExitState()
     {
-        Debug.Log("Exit State Step");
-        _otherMover.Stop();
-        _activeMover.Stop();
-        Context.IdleArms.Stop();
+        Debug.Log("Exit State Walk");
+        //_otherMover.Stop();
+        //_activeMover.Stop();
+        //Context.WalkArms.Stop();
     }
     public override MovementMachine.EMoveState GetNextState()
     {
-        if (_done >= 2)
+        /*
+        //ignore the ragdoll fall stuff for now
+        if (Context.Rb.linearVelocity.y < - 4)
+        {
+            return MovementMachine.EMoveState.Falling;
+        }
+        */
+        if (Context.Rb.linearVelocity.magnitude < 0.01)
         {
             return MovementMachine.EMoveState.Idle;
-        }
-        if (Context.Rb.linearVelocity.magnitude > 0.01)
-        {
-            return MovementMachine.EMoveState.Walk;
         }
         return StateKey;
     }
@@ -82,18 +99,23 @@ public class StepShuffleState : MovementState
         _activeFootDetector = _otherFootDetector;
         _otherMover = tmpMover;
         _otherFootDetector = tmpDetector;
-        Context.IdleArms.Reverse *= -1;
-        if (Context.IdleArms.Reverse ==-1) Context.IdleArms._timer = 1;
+        /*
+        Context.WalkArms.Reverse *= -1;
+        if (Context.WalkArms.Reverse ==-1) Context.WalkArms._timer = 1;
+        */
+
+
 
     }
 
     void SelectActiveFoot()
     {
-        _activeMover = Context.IdleLeftFoot;
+        /*
+        _activeMover = Context.WalkLeftFoot;
         _activeFootDetector = Context.LeftFootDetector;
-        _otherMover = Context.IdleRightFoot;
+        _otherMover = Context.WalkRightFoot;
         _otherFootDetector = Context.RightFootDetector;
-        Context.IdleArms.Reverse = -1;
+        Context.WalkArms.Reverse = -1;
         
         if (!_activeFootDetector.IsGrounded && _otherFootDetector.IsGrounded) return;
         if (_activeFootDetector.IsGrounded && !_otherFootDetector.IsGrounded)
@@ -107,21 +129,25 @@ public class StepShuffleState : MovementState
             SwitchFeet();
             return;
         }
+        */
         
     }
 
     void Reseting()
     {
         _activeMover.ResetValues();
-        Context.IdleArms.Prepare();
-        Context.IdleArms.ResetValues();
-        Context.IdleArms.UnHold();
-        Context.IdleArms.Go();        
+        /*
+        Context.WalkArms.Prepare();
+        Context.WalkArms.ResetValues();
+        Context.WalkArms.UnHold();
+        Context.WalkArms.Go();        
+        */
         _otherMover.ResetValues();
         _otherMover.UnHold();
         _otherMover.Go();
     }
 
+    /*
     void Placing()
     {
         _lerper += Time.deltaTime *5;
@@ -129,14 +155,13 @@ public class StepShuffleState : MovementState
         _otherFootDetector.transform.rotation = Quaternion.Slerp(_otherFootDetector.transform.rotation, _otherFootDetector.GetTargetRotation, _lerper);
         if (_lerper >= 1)
         {
-            
             _placing = false;
             _otherMover.Hold();
             _otherMover.Go();
-            _done +=1;
-            Reseting();
-            SwitchFeet();
+
         }
 
     }
+    */
 }
+

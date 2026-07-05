@@ -6,12 +6,17 @@ public class MovementMachine : StateManager<MovementMachine.EMoveState>
     {
         StepShuffle,
         Idle,
-        Walk
+        Walk,
+        Falling,
+        Recover
     }
 
     private MoveContext _context;
     [SerializeField] Rigidbody _rb;
     [SerializeField] CapsuleCollider _rootCollider;
+    [SerializeField] Marionette _marionette;
+    [SerializeField] PlayerController _playerController;
+    /*
     [SerializeField] CurveMovePlayer _walkArms;
     [SerializeField] CurveMovePlayer _walkLeftFoot;
     [SerializeField] CurveMovePlayer _walkRightFoot;
@@ -21,12 +26,18 @@ public class MovementMachine : StateManager<MovementMachine.EMoveState>
     [SerializeField] CurveMovePlayer _idleRightFoot;
     [SerializeField] FootDetector _leftFootDetector;
     [SerializeField] FootDetector _rightFootDetector;
+    */
 
     void Awake()
     {
+        _rb = transform.GetComponent<Rigidbody>();
+        _marionette = transform.GetComponent<Marionette>();
         _context = new MoveContext(
             _rb,
-            _rootCollider,
+            //_rootCollider,
+            _marionette,
+            _playerController
+            /*
             _walkArms,
             _walkLeftFoot,
             _walkRightFoot,
@@ -35,6 +46,7 @@ public class MovementMachine : StateManager<MovementMachine.EMoveState>
             _idleRightFoot,
             _leftFootDetector,
             _rightFootDetector
+            */
         );
         InitializeStates();
     }
@@ -43,7 +55,9 @@ public class MovementMachine : StateManager<MovementMachine.EMoveState>
     {
         States.Add(EMoveState.Idle, new IdleState(_context, EMoveState.Idle));
         States.Add(EMoveState.Walk, new WalkState(_context, EMoveState.Walk));
-        States.Add(EMoveState.StepShuffle, new StepShuffleState(_context, EMoveState.StepShuffle));
+        States.Add(EMoveState.Falling, new FreeFallState(_context, EMoveState.Falling));
+        States.Add(EMoveState.Recover, new RecoverState(_context, EMoveState.Recover));
+        //States.Add(EMoveState.StepShuffle, new StepShuffleState(_context, EMoveState.StepShuffle));
         CurrentState = States[EMoveState.Idle];
     }
 }
